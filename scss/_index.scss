@@ -109,7 +109,8 @@
 
 .see-more-primary__link {
   &:hover {
-    background-color: #c82233;
+    // background-color: #c82233;
+    background-color: #ffd007;
   }
 }
 
@@ -317,7 +318,8 @@
       left: 0;
       width: 100%;
       height: 73%;
-      background-color: red;
+      // background-color: red;
+      background-color: #ffc107;
       z-index: -1;
     }
   }
