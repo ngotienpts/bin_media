@@ -2,29 +2,6 @@ document.addEventListener("DOMContentLoaded", function () {
     // Tập hợp tất cả các phần tử cần sử dụng
     const backTop = document.querySelector("#back-top");
 
-    // xử lý sự kiện chuyển tab
-    function handleChangeTab () {
-        const changTabs = document.querySelectorAll('.js__changeTab')
-
-        if (changTabs.length === 0) return;
-
-        changTabs.forEach((changTab)=>{
-            const tabs = changTab.querySelectorAll(".js__tabItem");
-            const panes = changTab.querySelectorAll(".js__tabPane");
-
-            tabs.forEach((tab,index)=>{
-                tab.onclick = function() {
-                    pane = panes[index]
-
-                    changTab.querySelector('.js__tabItem.active').classList.remove('active')
-                    changTab.querySelector('.js__tabPane.active').classList.remove('active')
-
-                    this.classList.add('active')
-                    pane.classList.add('active')
-                }
-            })
-        })
-    }
 
     // Xử lý video tỉ lệ 16:9
      function handleVideo_16x9() {
@@ -90,29 +67,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 }  
                  
             }
-           
-        })
-    }
-
-    // xử lý sự kiện active
-    function handleActiveElement() {
-        const activeContainers = document.querySelectorAll('.js__activeContainer')
-        if (activeContainers.length === 0) return;
-        
-        
-        activeContainers.forEach((activeContainer)=>{
-            
-            const activeElements = activeContainer.querySelectorAll('.js__activeItem')
-            
-            if (activeElements.length === 0) return;
-
-            activeElements.forEach((activeElement)=>{
-
-                activeElement.onclick = function() {
-                    activeContainer.querySelector('.js__activeItem.active').classList.remove('active')
-                    this.classList.add('active');
-                }
-            })
            
         })
     }
@@ -463,41 +417,6 @@ document.addEventListener("DOMContentLoaded", function () {
         
     }
 
-    // xử lý sự kiện để show popup
-    function handleShowPopup() {
-        const popupContainers = document.querySelectorAll(".js__popupContainer");
-        
-        if(popupContainers.length === 0) return 
-        
-        popupContainers.forEach((popupContainer)=>{
-            
-            const showPopup = popupContainer.querySelector(".js__showPopup");
-            const popupContent = popupContainer.querySelector(".js__popupContent");
-            const closePopup = popupContainer.querySelector(".js__closePopup");
-            const overlay = popupContainer.querySelector(".js__overlay");
-            
-            showPopup.onclick = function() {
-                popupContent.classList.add('active')
-                overlay.classList.add('active')
-                document.querySelector("body").style.overflow = "hidden";
-            }
-    
-            closePopup.onclick = function () {
-                document.querySelector("body").style.overflow = "auto";
-                popupContent.classList.remove('active')
-                overlay.classList.remove('active')
-            };
-    
-            overlay.onclick = function () {
-                this.classList.remove("active");
-                document.querySelector("body").style.overflow = "auto";
-                popupContent.classList.remove('active');
-            };
-
-            })
-
-    }
-
 
     // Khởi tạo fancybox
     function initFancybox() {
@@ -567,10 +486,8 @@ document.addEventListener("DOMContentLoaded", function () {
         // end slide
         handleBackTop();
         initFancybox();
-        handleShowPopup();
         handleCollapse();
-        handleChangeTab();
-        handleActiveElement();
+        
         handleVideo_16x9();
         window.addEventListener('scroll',handleWindowScroll);
         window.addEventListener('resize',handleWindowScroll);
